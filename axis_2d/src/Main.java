@@ -3,14 +3,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-     Ex1();
-     Ex2();
-     Ex3();
-     Ex4();
-     Ex5();
-     Ex6();
-     Ex7();
-     Ex8();
+        /*enter Ex do you want to play
+        for example -- > Ex8();
+         */
+        Ex8();
     }
     public static Random r = new Random();
     public static Scanner s = new Scanner(System.in);
@@ -36,11 +32,20 @@ public class Main {
        addMultiplePoint(axisSystem1,arr,color);
     }
     public static void Ex4(){
-        System.out.print("Enter X: ");
-        int x = s.nextInt();
-        System.out.print("Enter Y: ");
-        int y = s.nextInt();
-        addSinglePoint(axisSystem1,x,y);
+        boolean res = false;
+        while (!res){
+            System.out.print("Enter X: ");
+            int x = s.nextInt();
+            System.out.print("Enter Y: ");
+            int y = s.nextInt();
+            if (x <= -250 || x >= 250 || y <= -250 || y >=250){
+                clear(axisSystem1);
+                System.out.println("out from a range");
+            }else {
+                addSinglePoint(axisSystem1, x, y);
+                res = true;
+            }
+        }
     }
     public static void Ex5(){
         System.out.print("How many point you want to draw? ");
@@ -52,16 +57,14 @@ public class Main {
             arr[i] = r.nextInt(30);
         }
         for (int i = 0; i < arr.length; i++) {
-            addMultiplePoint(axisSystem1, arr,color);
+            addMultiplePoint(axisSystem1, arr, color);
         }
     }
     public static void Ex6(){
-        for (int i = 0; i < 10; i++) {
-            int x = r.nextInt(30);
-            int y = (2*x) + 100;
-            addSinglePoint(axisSystem1,x,y);
+        for (int x = -35; x <= 35; x++) {
+            int y = (2 * x) + 100;
+            addSinglePoint(axisSystem1, x, y);
         }
-
     }
     public static void Ex7() {
         System.out.println("|Enter a details for y = mx + n| -->");
@@ -69,7 +72,7 @@ public class Main {
         int mx = s.nextInt();
         System.out.print("Enter n --> ");
         int n = s.nextInt();
-        for (int x = -250; x <= 250; x++) {
+        for (int x = -35; x <= 35; x++) {
             int y =(mx*x) + n;
             if (y >= -250 && y <= 250) {
                 addSinglePoint(axisSystem1, x, y);
